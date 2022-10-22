@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    font-size: 35px;
+    box-sizing: border-box;
+}
+button{
+    padding: 5px 15px;  
+    margin: 2px;
+    flex: 1;
+}
+
+/* container parent */
+/* container that centralizes the calculator */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    border: 5px solid black;
+    margin: 5px;
+
+    /* add color and style later */
+    /* use gradient border line to create a light around*/
+}
+
+/* buttons and display two flex items of the parent container */
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    margin: 5px;
+    padding: 10px;
+    
+
+
+
+    background-color: grey;
+}
+
+/* the display flex item of our  parent calculator */
+.display {
+    border: 2px solid black;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 5px 0px;
+
+    /* add color and style later */
+    background-color: green;
+}
+
+/* buttons second flex item of the parent calculator */
+.buttons {
+    display: flex;
+    border: 2px solid black;
+    align-items: flex-start;
+
+    /* add color and style later */
+    background-color: darkgray;
+}
+
+/* numbers first flex item of the parent buttons */
+
+.numbers {
+    display: flex;
+    flex-wrap:wrap;
+    border: 2px solid black;
+    margin: 5px;
+    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: center;
+
+}
+/* a rule that let us wrap after every third flex item */
+.wrapping { 
+    flex-basis: 100%;
+}
+.operators {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: 5px;
+}
