@@ -1,10 +1,11 @@
-*{
+* {
     margin: 0;
     font-size: 45px;
     box-sizing: border-box;
 }
-button{
-    padding: 5px 15px;  
+
+button {
+    padding: 5px 15px;
     margin: 2px;
     flex: 1;
 }
@@ -34,7 +35,7 @@ button{
     border: 5px solid black;
     margin: 5px;
     padding: 10px;
-    
+
 
 
 
@@ -43,14 +44,29 @@ button{
 
 /* the display flex item of our  parent calculator */
 .display {
+    display: flex;
+    height: 80px;
     border: 2px solid black;
     width: 100%;
     text-align: center;
     margin-bottom: 5px;
     padding: 5px 0px;
-
+    justify-content: flex-end;
     /* add color and style later */
     background-color: green;
+}
+
+.displayOP,
+.displayNum {
+
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 5px 0px;
+    max-width: fit-content;
+    /* add color and style later */
+    background-color: green;
+
 }
 
 /* buttons second flex item of the parent calculator */
@@ -67,7 +83,7 @@ button{
 
 .numbers {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     border: 2px solid black;
     margin: 5px;
     justify-content: space-between;
@@ -75,10 +91,12 @@ button{
     justify-content: center;
 
 }
+
 /* a rule that let us wrap after every third flex item */
-.wrapping { 
+.wrapping {
     flex-basis: 100%;
 }
+
 .operators {
     display: flex;
     flex-direction: column;

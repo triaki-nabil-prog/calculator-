@@ -25,21 +25,53 @@ function operate(operator, a, b) {
         case '/':
             return divide(a, b);
         default:
-            return "wrong operator";
     }
 }
+let currentValue = 0;
+let previousValue = 0;
+let currentOperation = "";
 
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+const clear = document.querySelector('.clear');
+const equal = document.querySelector('.equal');
+const displayNum = document.querySelector('.displayNum');
+const displayOP = document.querySelector('.displayOP');
 
+numbers.forEach(num => num.addEventListener('click', function (num) {
 
-// get the nodlist for all button nodes 
-const buttons = document.querySelectorAll('button');
-// loop through all buttons and add a event listener 
-buttons.forEach(buttonClick => buttonClick.addEventListener("click", function (buttonClick) {
-    display(buttonClick);
-    buttonClick.stopPropagation();
+    if (displayNum.textContent && currentOperation) {
+        currentOperation = "";
+        displayNum.textContent = "";
+        displayOP.textContent ="";
+    }
+
+    
+
+    displayNum.textContent += num.currentTarget.textContent;
+    currentValue = parseInt(displayNum.textContent);
 }));
-// execute this function when event triggered and 
-function display(event) {
-// gets the text content of the button triggered by the event 
-    console.log(event.target.textContent);
-}
+
+clear.addEventListener('click', function () {
+    displayNum.textContent = "";
+    displayOP.textContent = "";
+    currentValue = 0;
+    previousValue = 0;
+    operation = "";
+
+});
+
+operators.forEach(op =>
+    op.addEventListener('click', function (op) {
+        displayOP.textContent = op.currentTarget.textContent;
+        operation = displayOP.textContent;
+        currentOperation = operation;
+        previousValue = currentValue;
+    }));
+
+equal.addEventListener('click', function (eq) {
+    displayOP.textContent = eq.currentTarget.textContent;
+    displayNum.textContent = operate(operation, previousValue, currentValue);
+    currentOperation = "=";
+
+});
