@@ -30,6 +30,10 @@ function operate(operator, a, b) {
 let currentValue = 0;
 let previousValue = 0;
 let currentOperation = "";
+let previousOperation = "";
+
+
+
 
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
@@ -46,8 +50,6 @@ numbers.forEach(num => num.addEventListener('click', function (num) {
         displayOP.textContent ="";
     }
 
-    
-
     displayNum.textContent += num.currentTarget.textContent;
     currentValue = parseInt(displayNum.textContent);
 }));
@@ -57,21 +59,21 @@ clear.addEventListener('click', function () {
     displayOP.textContent = "";
     currentValue = 0;
     previousValue = 0;
-    operation = "";
+    previousOperation = "";
 
 });
 
 operators.forEach(op =>
     op.addEventListener('click', function (op) {
         displayOP.textContent = op.currentTarget.textContent;
-        operation = displayOP.textContent;
-        currentOperation = operation;
+        previousOperation = displayOP.textContent;
+        currentOperation = previousOperation;
         previousValue = currentValue;
     }));
 
 equal.addEventListener('click', function (eq) {
     displayOP.textContent = eq.currentTarget.textContent;
-    displayNum.textContent = operate(operation, previousValue, currentValue);
+    displayNum.textContent = operate(previousOperation, previousValue, currentValue);
     currentOperation = "=";
-
+    currentValue= parseInt(displayNum.textContent);
 });
