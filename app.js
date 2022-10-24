@@ -10,7 +10,12 @@ function multiply(a, b) {
     return a * b;
 }
 function divide(a, b) {
-    return a / b;
+   if(b==0) return "ERROR";
+
+    return (a / b).toFixed(7);
+}
+function modulo(a, b) {
+    return a % b;
 }
 
 
@@ -22,45 +27,56 @@ function operate(operator, a, b) {
             return subtract(a, b);
         case 'x':
             return multiply(a, b);
-        case '/':
+        case '÷':
             return divide(a, b);
+        case '%':
+            return modulo(a, b);
         default:
+            
     }
 }
 let currentValue = 0;
 let previousValue = 0;
 let currentOperation = "";
 let previousOperation = "";
+let temp = "";
 
 
 
 
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
-const clear = document.querySelector('.clearAll');
+const clearAll = document.querySelector('.clearAll');
 const equal = document.querySelector('.equal');
 const displayNum = document.querySelector('.displayNum');
 const displayOP = document.querySelector('.displayOP');
+const clearNum = document.querySelector('.clearNum');
 
 numbers.forEach(num => num.addEventListener('click', function (num) {
 
     if (displayNum.textContent && currentOperation) {
         currentOperation = "";
         displayNum.textContent = "";
-        displayOP.textContent ="";
+        displayOP.textContent = "";
     }
 
     displayNum.textContent += num.currentTarget.textContent;
     currentValue = parseInt(displayNum.textContent);
 }));
 
-clear.addEventListener('click', function () {
+clearAll.addEventListener('click', function () {
     displayNum.textContent = "";
     displayOP.textContent = "";
     currentValue = 0;
     previousValue = 0;
     previousOperation = "";
 
+});
+
+clearNum.addEventListener('click', function () {
+    temp = Array.from(displayNum.textContent);
+    displayNum.textContent = temp.slice(0,temp.length-1).join("");
+    currentValue = parseInt(displayNum.textContent);
 });
 
 operators.forEach(op =>
@@ -75,5 +91,8 @@ equal.addEventListener('click', function (eq) {
     displayOP.textContent = eq.currentTarget.textContent;
     displayNum.textContent = operate(previousOperation, previousValue, currentValue);
     currentOperation = "=";
-    currentValue= parseInt(displayNum.textContent);
+    currentValue = parseInt(displayNum.textContent);
 });
+
+
+
