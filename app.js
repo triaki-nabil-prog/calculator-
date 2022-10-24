@@ -10,9 +10,9 @@ function multiply(a, b) {
     return a * b;
 }
 function divide(a, b) {
-   if(b==0) return "ERROR";
+    if (b == 0) return "ERROR";
 
-    return (a / b).toFixed(7);
+    return (a / b).toFixed(2);
 }
 function modulo(a, b) {
     return a % b;
@@ -32,7 +32,7 @@ function operate(operator, a, b) {
         case '%':
             return modulo(a, b);
         default:
-            
+
     }
 }
 let currentValue = 0;
@@ -61,7 +61,7 @@ numbers.forEach(num => num.addEventListener('click', function (num) {
     }
 
     displayNum.textContent += num.currentTarget.textContent;
-    currentValue = parseInt(displayNum.textContent);
+    currentValue = parseFloat(displayNum.textContent);
 }));
 
 clearAll.addEventListener('click', function () {
@@ -75,8 +75,8 @@ clearAll.addEventListener('click', function () {
 
 clearNum.addEventListener('click', function () {
     temp = Array.from(displayNum.textContent);
-    displayNum.textContent = temp.slice(0,temp.length-1).join("");
-    currentValue = parseInt(displayNum.textContent);
+    displayNum.textContent = temp.slice(0, temp.length - 1).join("");
+    currentValue = parseFloat(displayNum.textContent);
 });
 
 operators.forEach(op =>
@@ -91,7 +91,7 @@ equal.addEventListener('click', function (eq) {
     displayOP.textContent = eq.currentTarget.textContent;
     displayNum.textContent = operate(previousOperation, previousValue, currentValue);
     currentOperation = "=";
-    currentValue = parseInt(displayNum.textContent);
+    currentValue = parseFloat(displayNum.textContent);
 });
 
 
