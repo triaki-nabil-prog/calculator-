@@ -36,8 +36,7 @@ button {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    margin: 5px;
-
+   
 
     /* add color and style later */
     /* use gradient border line to create a light around*/
@@ -134,6 +133,7 @@ text-align: center;
 font-size: 15px;
 padding: 20px;
 width: 100%;
+
 
 }
 
