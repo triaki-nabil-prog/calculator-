@@ -1,14 +1,29 @@
-* {
+
+*{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    font-weight: bold;
+    
+}
+
+body {
+    background: #2a9d8f;
+    background: -webkit-linear-gradient(0deg, #2a9d8f 0%, #264653 50%, #000000 100%);
+    background: linear-gradient(0deg, #2a9d8f 0%, #264653 50%, #000000 100%);
     margin: 0;
-    font-size: 45px;
     box-sizing: border-box;
 }
+
 
 button {
     padding: 5px 15px;
     margin: 2px;
     flex: 1;
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    border-color: #e76f51;
+    background-color: #e76f51;
+    color: #264653;
 }
+
 
 /* container parent */
 /* container that centralizes the calculator */
@@ -18,12 +33,13 @@ button {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    border: 5px solid black;
     margin: 5px;
+
 
     /* add color and style later */
     /* use gradient border line to create a light around*/
 }
+
 
 /* buttons and display two flex items of the parent container */
 
@@ -32,28 +48,31 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 5px solid black;
-    margin: 5px;
-    padding: 10px;
+    margin-bottom: auto;
+    max-width: 300px;
+box-shadow: 0px 0px 35px 16px rgba(233, 196, 106, 0.49);
 
-
-
-
-    background-color: grey;
+    
 }
 
 /* the display flex item of our  parent calculator */
 .display {
     display: flex;
     height: 80px;
-    border: 2px solid black;
+    font-size: 40px;
+   
     width: 100%;
     text-align: center;
-    margin-bottom: 5px;
+    color:#f4a261;
     padding: 5px 0px;
     justify-content: flex-end;
     /* add color and style later */
-    background-color: green;
+    background-color: #264653;
+}
+
+.number0 {
+    flex-grow: 3;
+
 }
 
 .displayOP,
@@ -65,18 +84,19 @@ button {
     padding: 5px 0px;
     max-width: fit-content;
     /* add color and style later */
-    background-color: green;
+    
 
 }
 
 /* buttons second flex item of the parent calculator */
 .buttons {
     display: flex;
-    border: 2px solid black;
+    
     align-items: flex-start;
 
     /* add color and style later */
-    background-color: darkgray;
+    
+    background-color: #e9c46a;
 }
 
 /* numbers first flex item of the parent buttons */
@@ -84,7 +104,7 @@ button {
 .numbers {
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid black;
+    
     margin: 5px;
     justify-content: space-between;
     align-items: flex-start;
@@ -100,6 +120,113 @@ button {
 .operators {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    
     margin: 5px;
+}
+
+.Copyright{
+background-color: #264653;
+text-align: center;
+font-size: 15px;
+padding: 20px;
+width: 100%;
+
+}
+
+
+
+
+/* title glitch effect  */
+
+
+.glitch-wrapper {
+    width: 100%;
+    margin-bottom: auto;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.glitch {
+    position: relative;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.2;
+    color:#f4a261;
+    letter-spacing: 5px;
+    z-index: 1;
+}
+
+.glitch:before,
+.glitch:after {
+    display: block;
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}
+
+.glitch:before {
+    animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: #2a9d8f;
+    z-index: -1;
+}
+
+.glitch:after {
+    animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    color: #e76f51;
+    z-index: -2;
+}
+
+@keyframes glitch-color {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-3px, 3px);
+    }
+
+    40% {
+        transform: translate(-3px, -3px);
+    }
+
+    60% {
+        transform: translate(3px, 3px);
+    }
+
+    80% {
+        transform: translate(3px, -3px);
+    }
+
+    to {
+        transform: translate(0);
+    }
+}
+
+
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+    div.calculator {
+        margin-left: 40px;
+        margin-right: 40px;
+        
+        
+    }
+   
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+    div.calculator {
+        margin-left: 20px;
+        margin-right: 20px;
+       
+    }
+   
 }

@@ -37,7 +37,7 @@ let previousOperation = "";
 
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
-const clear = document.querySelector('.clear');
+const clear = document.querySelector('.clearAll');
 const equal = document.querySelector('.equal');
 const displayNum = document.querySelector('.displayNum');
 const displayOP = document.querySelector('.displayOP');
