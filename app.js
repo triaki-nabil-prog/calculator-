@@ -54,22 +54,28 @@ const clearNum = document.querySelector('.clearNum');
 
 numbers.forEach(num => num.addEventListener('click', function (num) {
 
-    if (displayNum.textContent && currentOperation) {
+    if (!(parseInt(currentValue) === currentValue)&&document.getElementById("decimal").disabled ==false && !previousValue) {document.getElementById("decimal").disabled = true;
+return;
+}
+
+    else if (displayNum.textContent && currentOperation) {
         currentOperation = "";
         displayNum.textContent = "";
         displayOP.textContent = "";
     }
-
+    document.getElementById("decimal").disabled = false;
     displayNum.textContent += num.currentTarget.textContent;
     currentValue = parseFloat(displayNum.textContent);
 }));
 
 clearAll.addEventListener('click', function () {
-    displayNum.textContent = "";
+    displayNum.textContent = "cleared";
     displayOP.textContent = "";
     currentValue = 0;
     previousValue = 0;
     previousOperation = "";
+    temp = "";
+    document.getElementById("decimal").disabled = false;
 
 });
 
@@ -77,6 +83,7 @@ clearNum.addEventListener('click', function () {
     temp = Array.from(displayNum.textContent);
     displayNum.textContent = temp.slice(0, temp.length - 1).join("");
     currentValue = parseFloat(displayNum.textContent);
+
 });
 
 operators.forEach(op =>
