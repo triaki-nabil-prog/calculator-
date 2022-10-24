@@ -7,15 +7,15 @@ function subtract(a, b) {
     return a - b;
 }
 function multiply(a, b) {
-    return a * b;
+    return Math.round((a * b )* 1000) / 1000;
 }
 function divide(a, b) {
     if (b == 0) return "ERROR";
 
-    return (a / b).toFixed(2);
+    return Math.round((a / b)* 1000) / 1000;
 }
 function modulo(a, b) {
-    return a % b;
+    return Math.round((a % b )* 1000) / 1000;
 }
 
 
@@ -54,9 +54,10 @@ const clearNum = document.querySelector('.clearNum');
 
 numbers.forEach(num => num.addEventListener('click', function (num) {
 
-    if (!(parseInt(currentValue) === currentValue)&&document.getElementById("decimal").disabled ==false && !previousValue) {document.getElementById("decimal").disabled = true;
-return;
-}
+    if (!(parseInt(currentValue) === currentValue) && document.getElementById("decimal").disabled == false && !previousValue) {
+        document.getElementById("decimal").disabled = true;
+        return;
+    }
 
     else if (displayNum.textContent && currentOperation) {
         currentOperation = "";
@@ -100,6 +101,10 @@ equal.addEventListener('click', function (eq) {
     currentOperation = "=";
     currentValue = parseFloat(displayNum.textContent);
 });
+
+
+
+
 
 
 
